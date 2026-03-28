@@ -1,0 +1,7 @@
+[tools]
+rust = "1.94.0"
+rust-analyzer = "latest"
+"cargo:cross" = "latest"
+
+[tasks.rpi3]
+run = "cross build --release --target=aarch64-unknown-linux-gnu && rm -f cloudflare-ddns.aarch64-unknown-linux-gnu.tar.gz && tar -cvzf cloudflare-ddns.aarch64-unknown-linux-gnu.tar.gz -C target/aarch64-unknown-linux-gnu/release/ cloudflare-ddns && shasum -a 256 target/aarch64-unknown-linux-gnu/release/cloudflare-ddns"
